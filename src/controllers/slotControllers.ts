@@ -81,7 +81,6 @@ export const getAppointmentById = async (
   }
 };
 
-//Create/book an appointment
 export const createAppointment = async (
   req: Request,
   res: Response
