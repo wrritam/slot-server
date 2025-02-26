@@ -1,12 +1,14 @@
 import cron from "node-cron";
 import Appointment from "../models/Appointment";
 
-// Function to get today's date in IST with time set to 00:00:00
 const getISTDate = (): Date => {
   const now = new Date();
-  now.setUTCHours(now.getUTCHours() + 5, now.getUTCMinutes() + 30, 0, 0);
-  now.setUTCHours(0, 0, 0, 0);
-  return now;
+
+  const istDate = new Date(now.getTime() + (5 * 60 + 30) * 60 * 1000);
+
+  istDate.setHours(0, 0, 0, 0);
+
+  return istDate;
 };
 
 // Function to initialize slots for a specific date
@@ -15,7 +17,7 @@ export const initializeSlotsForDate = async (date: Date): Promise<void> => {
     const timeSlots = [
       "9AM-10AM",
       "10AM-11AM",
-      "11AM-12AM",
+      "11AM-12PM",
       "12PM-1PM",
       "1PM-2PM",
       "2PM-3PM",
@@ -23,29 +25,33 @@ export const initializeSlotsForDate = async (date: Date): Promise<void> => {
       "4PM-5PM",
     ];
 
-    // Set targetDate to midnight IST
-    const targetDate = new Date(date);
-    targetDate.setUTCHours(0, 0, 0, 0);
+    // Create start of day for the target date
+    const startOfDay = new Date(date);
+    startOfDay.setHours(0, 0, 0, 0);
 
-    // Check if slots already exist
+    // Create end of day for the target date
+    const endOfDay = new Date(date);
+    endOfDay.setHours(23, 59, 59, 999);
+
+    // Check if slots already exist for this date range
     const existingSlots = await Appointment.find({
       date: {
-        $gte: targetDate,
-        $lt: new Date(targetDate.getTime() + 24 * 60 * 60 * 1000),
+        $gte: startOfDay,
+        $lte: endOfDay,
       },
     });
 
     if (existingSlots.length > 0) {
       console.log(
-        `Time slots for ${targetDate.toISOString().split("T")[0]} already exist`
+        `Time slots for ${startOfDay.toISOString().split("T")[0]} already exist`
       );
       return;
     }
 
-    // Create slots
+    // Create slots with the correct date
     const slots = timeSlots.map((slot) => ({
       timeSlot: slot,
-      date: targetDate,
+      date: new Date(startOfDay), // Create new date instance for each slot
       isBooked: false,
       user: null,
     }));
@@ -53,7 +59,7 @@ export const initializeSlotsForDate = async (date: Date): Promise<void> => {
     await Appointment.insertMany(slots);
     console.log(
       `Successfully initialized slots for ${
-        targetDate.toISOString().split("T")[0]
+        startOfDay.toISOString().split("T")[0]
       }`
     );
   } catch (error) {
@@ -61,14 +67,17 @@ export const initializeSlotsForDate = async (date: Date): Promise<void> => {
   }
 };
 
-// cron job logic to run at midnight IST every day
+// cron job to run at midnight IST (6:30 PM UTC)
 export const setupDailySlotInitialization = (): void => {
-  cron.schedule("0 18 * * *", async () => {
-    const today = getISTDate();
-    await initializeSlotsForDate(today);
+  // Run at 6:30 PM UTC (midnight IST)
+  cron.schedule("30 18 * * *", async () => {
+    const tomorrow = getISTDate();
+    tomorrow.setDate(tomorrow.getDate() + 1); // Create slots for tomorrow
+    await initializeSlotsForDate(tomorrow);
+    console.log("Scheduled slots created for tomorrow");
   });
 
-  // Initialize slots for the day when the server starts
+  // Initialize slots for today when server starts
   const today = getISTDate();
   initializeSlotsForDate(today);
 
