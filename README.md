@@ -1,3 +1,4 @@
+
 # Slot Server
 
 This repository contains the backend implementation for the Digital Trons assignment. The project is built with TypeScript and utilizes MongoDB for database management. 
@@ -49,3 +50,11 @@ Follow these steps to set up the project locally:
    npm run dev
 
 This will start the server on the port specified in your environment variables and automatically reload on file changes.
+
+## Note to the Project Reviewer
+
+The 'justjoshdevs' github profile is my another profile. I had to use a separate account for a freelance project to work with other devs that's why it's in my machine. You can see my name in the below screenshot.
+<div align="center">
+
+<img src ="src/Screenshot (83).png" width=full height=full>
+</div>
