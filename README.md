@@ -3,9 +3,9 @@
 
 This repository contains the backend implementation for the Digital Trons assignment. The project is built with TypeScript and utilizes MongoDB for database management. 
 
-Here's the live link - [Live deployed Link](https://slot-server-6a9p.onrender.com)
+Here's the live link (Try to open it in a different tab) - [Live deployed Link](https://slot-server-6a9p.onrender.com)
 
-Here's the Postman documentation - [Postman documentation](https://documenter.getpostman.com/view/21414570/2sAYdeNXWM#178ed9b9-631e-4c4c-aaf1-959432c9105d)
+Here's the Postman documentation (Try to open it in a different tab) - [Postman documentation](https://documenter.getpostman.com/view/21414570/2sAYdeNXWM#178ed9b9-631e-4c4c-aaf1-959432c9105d)
 
 ## Note to the Project Reviewer
 - The backend server is deployed on render. Render take a few seconds to boot after a long time of inactivity.
