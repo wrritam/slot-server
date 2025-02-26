@@ -7,6 +7,14 @@ Here's the live link - [Live deployed Link](https://slot-server-6a9p.onrender.co
 
 Here's the Postman documentation - [Postman documentation](https://documenter.getpostman.com/view/21414570/2sAYdeNXWM#178ed9b9-631e-4c4c-aaf1-959432c9105d)
 
+## Note to the Project Reviewer
+
+The 'justjoshdevs' github profile is my another profile. I had to use a separate account for a freelance project to work with other devs that's why it's in my machine. You can see my name in the below screenshot.
+<div align="center">
+
+<img src ="src/Screenshot (83).png" width=full height=full>
+</div>
+
 ## Features
 
 - TypeScript-based backend for type safety.
@@ -50,11 +58,3 @@ Follow these steps to set up the project locally:
    npm run dev
 
 This will start the server on the port specified in your environment variables and automatically reload on file changes.
-
-## Note to the Project Reviewer
-
-The 'justjoshdevs' github profile is my another profile. I had to use a separate account for a freelance project to work with other devs that's why it's in my machine. You can see my name in the below screenshot.
-<div align="center">
-
-<img src ="src/Screenshot (83).png" width=full height=full>
-</div>
