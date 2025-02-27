@@ -8,7 +8,7 @@ Here's the live link (Try to open it in a different tab) - [Live deployed Link](
 Here's the Postman documentation (Try to open it in a different tab) - [Postman documentation](https://documenter.getpostman.com/view/21414570/2sAYdeNXWM#178ed9b9-631e-4c4c-aaf1-959432c9105d)
 
 ## Note to the Project Reviewer
-- The backend server is deployed on render. Render take a few seconds to boot after a long time of inactivity.
+- The backend server is deployed on render. Render takes a few seconds to boot after a long inactivity (almost takes 50 sec to start).
 - The 'justjoshdevs' github profile is my another profile. I had to use a separate account for a freelance project to work with other devs that's why it's in my machine. You can see my name in the below screenshot.
 <div align="center">
 
