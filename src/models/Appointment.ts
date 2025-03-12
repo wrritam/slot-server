@@ -10,7 +10,7 @@ export interface IAppointment extends Document {
   updatedAt: Date;
 }
 // test test
-
+// account check test
 const appointmentSchema = new Schema(
   {
     timeSlot: {
