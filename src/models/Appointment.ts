@@ -9,6 +9,7 @@ export interface IAppointment extends Document {
   createdAt: Date;
   updatedAt: Date;
 }
+// test test
 
 const appointmentSchema = new Schema(
   {
